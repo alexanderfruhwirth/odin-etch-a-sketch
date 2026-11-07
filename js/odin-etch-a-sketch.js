@@ -5,5 +5,8 @@ for (let i = 1; i <= tilesPerSide; i++) {
     const tile = document.createElement("div");
     tile.classList.add("tile");
     gridContainer.appendChild(tile);
+    tile.addEventListener("mouseenter", (e) => {
+      e.currentTarget.classList.add("bg-red");
+    });
   }
 }

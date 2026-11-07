@@ -25,3 +25,7 @@ body {
   height: 6.25vmin;
   border: 1px solid black;
 }
+
+.bg-red {
+  background-color: red;
+}
