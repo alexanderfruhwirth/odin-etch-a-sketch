@@ -1,11 +1,11 @@
 const gridContainer = document.querySelector("#grid-container");
-const gridSize = 100;
+const gridSideLength = 100;
 let tilesPerSide = 16;
-let sideLength = `${gridSize / tilesPerSide}vmin`;
+let tileSideLength = `${gridSideLength / tilesPerSide}vmin`;
 for (let i = 1; i <= tilesPerSide; i++) {
   for (let j = 1; j <= tilesPerSide; j++) {
     const tile = document.createElement("div");
-    tile.style.setProperty("--side-length", sideLength);
+    tile.style.setProperty("--tile-side-length", tileSideLength);
     tile.classList.add("tile");
     gridContainer.appendChild(tile);
     tile.addEventListener("mouseenter", (e) => {
@@ -29,11 +29,11 @@ setTilesPerSideBtn.addEventListener("click", () => {
       gridContainer.removeChild(gridContainer.firstChild);
     }
     tilesPerSide = userInput;
-    let sideLength = `${gridSize / tilesPerSide}vmin`;
+    tileSideLength = `${gridSideLength / tilesPerSide}vmin`;
     for (let i = 1; i <= tilesPerSide; i++) {
       for (let j = 1; j <= tilesPerSide; j++) {
         const tile = document.createElement("div");
-        tile.style.setProperty("--side-length", sideLength);
+        tile.style.setProperty("--tile-side-length", tileSideLength);
         tile.classList.add("tile");
         gridContainer.appendChild(tile);
         tile.addEventListener("mouseenter", (e) => {

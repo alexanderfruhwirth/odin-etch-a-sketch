@@ -28,8 +28,8 @@ body {
 }
 
 .tile {
-  width: var(--side-length);
-  height: var(--side-length);
+  width: var(--tile-side-length);
+  height: var(--tile-side-length);
   border: 1px solid black;
 }
 
