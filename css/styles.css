@@ -20,10 +20,23 @@ body {
   flex-wrap: wrap;
 }
 
+#settings-container {
+  width: 100vmin;
+  height: 100vmin;
+  display: flex;
+  justify-content: center;
+}
+
 .tile {
   width: 6.25vmin;
   height: 6.25vmin;
   border: 1px solid black;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .bg-red {
