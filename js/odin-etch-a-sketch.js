@@ -17,7 +17,12 @@ for (let i = 1; i <= tilesPerSide; i++) {
     tile.classList.add("tile");
     gridContainer.appendChild(tile);
     tile.addEventListener("mouseenter", (e) => {
-      e.currentTarget.style.setProperty("background-color", randomiseColour());
+      if (!e.currentTarget.style.backgroundColor) {
+        e.currentTarget.style.setProperty(
+          "background-color",
+          randomiseColour(),
+        );
+      }
     });
   }
 }
@@ -45,10 +50,12 @@ setTilesPerSideBtn.addEventListener("click", () => {
         tile.classList.add("tile");
         gridContainer.appendChild(tile);
         tile.addEventListener("mouseenter", (e) => {
-          e.currentTarget.style.setProperty(
-            "background-color",
-            randomiseColour(),
-          );
+          if (!e.currentTarget.style.backgroundColor) {
+            e.currentTarget.style.setProperty(
+              "background-color",
+              randomiseColour(),
+            );
+          }
         });
       }
     }
