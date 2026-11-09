@@ -1,3 +1,11 @@
+function randomiseColourChannelValue() {
+  return Math.floor(Math.random() * 256);
+}
+
+function randomiseColour() {
+  return `rgb(${randomiseColourChannelValue()} ${randomiseColourChannelValue()} ${randomiseColourChannelValue()})`;
+}
+
 const gridContainer = document.querySelector("#grid-container");
 const gridSideLength = 100;
 let tilesPerSide = 16;
@@ -9,7 +17,7 @@ for (let i = 1; i <= tilesPerSide; i++) {
     tile.classList.add("tile");
     gridContainer.appendChild(tile);
     tile.addEventListener("mouseenter", (e) => {
-      e.currentTarget.classList.add("bg-red");
+      e.currentTarget.style.setProperty("background-color", randomiseColour());
     });
   }
 }
@@ -37,7 +45,10 @@ setTilesPerSideBtn.addEventListener("click", () => {
         tile.classList.add("tile");
         gridContainer.appendChild(tile);
         tile.addEventListener("mouseenter", (e) => {
-          e.currentTarget.classList.add("bg-red");
+          e.currentTarget.style.setProperty(
+            "background-color",
+            randomiseColour(),
+          );
         });
       }
     }
