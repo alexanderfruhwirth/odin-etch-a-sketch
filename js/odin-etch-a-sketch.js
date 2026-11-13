@@ -3,7 +3,20 @@ function randomiseColourChannelValue() {
 }
 
 function randomiseColour() {
-  return `rgb(${randomiseColourChannelValue()} ${randomiseColourChannelValue()} ${randomiseColourChannelValue()})`;
+  return `rgb(${randomiseColourChannelValue()} ${randomiseColourChannelValue()} ${randomiseColourChannelValue()} / 0.1)`;
+}
+
+function darkenColour(currentColour) {
+  let [
+    redChannelValue,
+    greenChannelValue,
+    blueChannelValue,
+    alphaChannelValue,
+  ] = currentColour.match(/[\d.]+/g);
+  if (+alphaChannelValue < 1) {
+    currentColour = `rgb(${redChannelValue} ${greenChannelValue} ${blueChannelValue} / ${Math.min(Math.round((+alphaChannelValue + 0.1) * 10) / 10, 1)})`;
+    return currentColour;
+  }
 }
 
 const gridContainer = document.querySelector("#grid-container");
@@ -22,6 +35,13 @@ for (let i = 1; i <= tilesPerSide; i++) {
           "background-color",
           randomiseColour(),
         );
+      } else {
+        const darkenedColour = darkenColour(
+          e.currentTarget.style.getPropertyValue("background-color"),
+        );
+        if (darkenedColour) {
+          e.currentTarget.style.setProperty("background-color", darkenedColour);
+        }
       }
     });
   }
@@ -55,6 +75,16 @@ setTilesPerSideBtn.addEventListener("click", () => {
               "background-color",
               randomiseColour(),
             );
+          } else {
+            const darkenedColour = darkenColour(
+              e.currentTarget.style.getPropertyValue("background-color"),
+            );
+            if (darkenedColour) {
+              e.currentTarget.style.setProperty(
+                "background-color",
+                darkenedColour,
+              );
+            }
           }
         });
       }
